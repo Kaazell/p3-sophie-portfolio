@@ -1,5 +1,4 @@
 async function getWorks(filter) {
-  document.querySelector(".gallery").innerHTML = "";
   const url = "http://localhost:5678/api/works";
   try {
     const response = await fetch(url);
@@ -8,20 +7,18 @@ async function getWorks(filter) {
     }
     const json = await response.json();
     if (filter) {
+      console.log(filter);
       const filtered = json.filter((data) => data.categoryId === filter);
-      for (let i = 0; i < filtered.length; i++) {
-        setFigure(filtered[i]);
-      }
-    } else {
+      console.log(filtered);
       for (let i = 0; i < json.length; i++) {
-        setFigure(json[i]);
+        setFigure(filtered[i]);
       }
     }
   } catch (error) {
     console.error(error.message);
   }
 }
-getWorks();
+getWorks(2);
 
 function setFigure(data) {
   const figure = document.createElement("figure");
@@ -58,6 +55,5 @@ function setFilter(data) {
   div.innerHTML = `${data.name}`;
   document.querySelector(".div-container").append(div);
 }
-
-document.querySelector(".tous").addEventListener("click", () => getWorks());
+// document.querySelector(".tous").addEventListener("click", () => getWorks());
 // quel parametre envoyer dans getWorks ? (Probablement le id de la categorie)
