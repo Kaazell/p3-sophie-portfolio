@@ -50,7 +50,6 @@ async function getCategories() {
 getCategories();
 
 function setFilter(data) {
-  console.log(data);
   const div = document.createElement("div");
   div.className = data.id;
   div.addEventListener("click", () => getWorks(data.id));
@@ -61,3 +60,16 @@ function setFilter(data) {
 
 document.querySelector(".tous").addEventListener("click", () => getWorks());
 // quel parametre envoyer dans getWorks ? (Probablement le id de la categorie)
+
+function displayAdminMode() {
+  if (sessionStorage.authToken) {
+    console.log("ok");
+    const editBanner = document.createElement("div");
+    editBanner.className = "edit";
+    editBanner.innerHTML =
+      '<p><i class="fa-regular fa-pen-to-square"></i>Mode édition</p>';
+    document.body.prepend(editBanner);
+  }
+}
+
+displayAdminMode();

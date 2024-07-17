@@ -22,9 +22,10 @@ async function handleSubmit(event) {
     errorBox.className = "error-login";
     errorBox.innerHTML = "Il y a eu une erreur";
     document.querySelector("form").prepend(errorBox);
+  } else {
+    let result = await response.json();
+    const token = result.token;
+    sessionStorage.setItem("authToken", token);
+    window.location.href = "index.html";
   }
-  let result = await response.json();
-  const token = result.token;
-  sessionStorage.setItem("authToken", token);
-  window.location.href = "index.html";
 }
