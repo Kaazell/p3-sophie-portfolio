@@ -29,3 +29,4 @@ async function handleSubmit(event) {
     window.location.href = "index.html";
   }
 }
+console.log("Hello World");
