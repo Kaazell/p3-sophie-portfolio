@@ -11,10 +11,12 @@ async function getWorks(filter) {
       const filtered = json.filter((data) => data.categoryId === filter);
       for (let i = 0; i < filtered.length; i++) {
         setFigure(filtered[i]);
+        setFigureModal(filtered[i]);
       }
     } else {
       for (let i = 0; i < json.length; i++) {
         setFigure(json[i]);
+        setFigureModal(json[i]);
       }
     }
   } catch (error) {
@@ -29,6 +31,14 @@ function setFigure(data) {
                     <figcaption>${data.title}</figcaption>`;
 
   document.querySelector(".gallery").append(figure);
+}
+
+function setFigureModal(data) {
+  const figure = document.createElement("figure");
+  figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
+                    <figcaption>${data.title}</figcaption>`;
+
+  document.querySelector(".modal-gallery").append(figure);
 }
 
 async function getCategories() {
