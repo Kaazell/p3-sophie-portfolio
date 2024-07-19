@@ -205,6 +205,25 @@ li:hover {
 .modal-gallery img {
 	width: 100%;
 }
+.modal-wrapper hr {
+    margin-top: 30px;
+
+}
+.modal-button-container{
+    display: flex;
+    justify-content: center;
+}
+.add-photo-button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: 1px solid #1D6154;
+    border-radius: 25px;
+    font-family: 'Syne';
+    color: white;
+    cursor: pointer;
+    background-color: #1D6154;
+    width: 250px;
+}
 #contact {
 	width: 50%;
 margin: auto;
