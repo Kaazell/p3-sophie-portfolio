@@ -35,8 +35,12 @@ function setFigure(data) {
 
 function setFigureModal(data) {
   const figure = document.createElement("figure");
-  figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
-                    <figcaption>${data.title}</figcaption>`;
+  figure.innerHTML = `<div class="image-container">
+        <img src="${data.imageUrl}" alt="${data.title}">
+        <figcaption>${data.title}</figcaption>
+        <i class="fa-solid fa-trash-can overlay-icon"></i>
+    </div>
+`;
 
   document.querySelector(".modal-gallery").append(figure);
 }
