@@ -164,6 +164,7 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 // Delete Function
 
 async function deleteWork(event) {
+  event.stopPropagation(); // Ajouté pour arrêter la propagation de l'événement
   const id = event.srcElement.id;
   const deleteApi = "http://localhost:5678/api/works/";
   const token = sessionStorage.authToken;
