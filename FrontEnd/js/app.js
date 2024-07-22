@@ -78,7 +78,6 @@ function setFilter(data) {
 }
 
 document.querySelector(".tous").addEventListener("click", () => getWorks());
-// quel parametre envoyer dans getWorks ? (Probablement le id de la categorie)
 
 function displayAdminMode() {
   if (sessionStorage.authToken) {
@@ -186,31 +185,36 @@ async function deleteWork(event) {
 }
 
 // Modal switch
-const switchModal = function () {
-  console.log("clicked");
-  document.querySelector(
-    ".modal-wrapper"
-  ).innerHTML = `<div class="close-button-container">
-          <button class="js-modal-close">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-        <h3>Ajout photo</h3>
-        <div class="add-photo-form">
-        <form action="#" method="post">
-          <label for="title">Titre</label>
-          <input type="text" name="title" id="title" />
-          <label for="category">Catégorie</label>
-          <input type="category" name="category" id="category" />
-          <input type="submit" value="Envoyer" />
-        </form>
-        </div>
-        <hr />
-        <div class="modal-button-container">
-          <button class="validate-button">Valider</button>
-        </div>`;
-};
+// const switchModal = function () {
+//   console.log("clicked");
+//   document.querySelector(
+//     ".modal-wrapper"
+//   ).innerHTML = `<div class="modal-buttons-container">
+//           <button class="v">
+//             <i class="fa-solid fa-arrow-left"></i>
+//           </button>
+//           <button class="js-modal-close">
+//             <i class="fa-solid fa-xmark"></i>
+//           </button>
+//         </div>
+//         <h3>Ajout photo</h3>
+//       <div class="form add-photo-form">
+//         <form action="#" method="post">
+//           <label for="title">Titre</label>
+//           <input type="text" name="title" id="title" />
+//           <label for="category">Catégorie</label>
+//           <input type="category" name="category" id="category" />
+//           <hr />
+//           <input type="submit" value="Valider" />
+//         </form>
+//         </div>
+//         `;
+//   modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+//   modal.querySelector(".js-modal-back").addEventListener("click", openModal);
+// };
 
-const addPhotoButton = document.querySelector(".add-photo-button");
-console.log(addPhotoButton);
-addPhotoButton.addEventListener("click", switchModal);
+// const backButton = document.querySelector(".fa-arrow-left");
+
+// const addPhotoButton = document.querySelector(".add-photo-button");
+// console.log(addPhotoButton);
+// addPhotoButton.addEventListener("click", switchModal);
