@@ -104,7 +104,10 @@ const openModal = function (e) {
   modal.removeAttribute("aria-hidden");
   modal.setAttribute("aria-modal", "true");
   modal.addEventListener("click", closeModal);
-  modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
+  modal
+    .querySelectorAll(".js-modal-close")
+    .forEach((e) => e.addEventListener("click", closeModal));
+
   modal
     .querySelector(".js-modal-stop")
     .addEventListener("click", stopPropagation);
@@ -184,37 +187,25 @@ async function deleteWork(event) {
   }
 }
 
-// Modal switch
-// const switchModal = function () {
-//   console.log("clicked");
-//   document.querySelector(
-//     ".modal-wrapper"
-//   ).innerHTML = `<div class="modal-buttons-container">
-//           <button class="v">
-//             <i class="fa-solid fa-arrow-left"></i>
-//           </button>
-//           <button class="js-modal-close">
-//             <i class="fa-solid fa-xmark"></i>
-//           </button>
-//         </div>
-//         <h3>Ajout photo</h3>
-//       <div class="form add-photo-form">
-//         <form action="#" method="post">
-//           <label for="title">Titre</label>
-//           <input type="text" name="title" id="title" />
-//           <label for="category">Catégorie</label>
-//           <input type="category" name="category" id="category" />
-//           <hr />
-//           <input type="submit" value="Valider" />
-//         </form>
-//         </div>
-//         `;
-//   modal.querySelector(".js-modal-close").addEventListener("click", closeModal);
-//   modal.querySelector(".js-modal-back").addEventListener("click", openModal);
-// };
+//Toggle function
+const addPhotoButton = document.querySelector(".add-photo-button");
+const backButton = document.querySelector(".js-modal-back");
 
-// const backButton = document.querySelector(".fa-arrow-left");
+addPhotoButton.addEventListener("click", toggleModal);
+backButton.addEventListener("click", toggleModal);
 
-// const addPhotoButton = document.querySelector(".add-photo-button");
-// console.log(addPhotoButton);
-// addPhotoButton.addEventListener("click", switchModal);
+function toggleModal() {
+  const galleryModal = document.querySelector(".gallery-modal");
+  const addModal = document.querySelector(".add-modal");
+
+  if (
+    galleryModal.style.display === "block" ||
+    galleryModal.style.display === ""
+  ) {
+    galleryModal.style.display = "none";
+    addModal.style.display = "block";
+  } else {
+    galleryModal.style.display = "block";
+    addModal.style.display = "none";
+  }
+}
