@@ -164,7 +164,7 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 // Delete Function
 
 async function deleteWork(event) {
-  event.stopPropagation(); // Ajouté pour arrêter la propagation de l'événement
+  event.stopPropagation();
   const id = event.srcElement.id;
   const deleteApi = "http://localhost:5678/api/works/";
   const token = sessionStorage.authToken;
@@ -184,3 +184,33 @@ async function deleteWork(event) {
     console.log(result);
   }
 }
+
+// Modal switch
+const switchModal = function () {
+  console.log("clicked");
+  document.querySelector(
+    ".modal-wrapper"
+  ).innerHTML = `<div class="close-button-container">
+          <button class="js-modal-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <h3>Ajout photo</h3>
+        <div class="add-photo-form">
+        <form action="#" method="post">
+          <label for="title">Titre</label>
+          <input type="text" name="title" id="title" />
+          <label for="category">Catégorie</label>
+          <input type="category" name="category" id="category" />
+          <input type="submit" value="Envoyer" />
+        </form>
+        </div>
+        <hr />
+        <div class="modal-button-container">
+          <button class="validate-button">Valider</button>
+        </div>`;
+};
+
+const addPhotoButton = document.querySelector(".add-photo-button");
+console.log(addPhotoButton);
+addPhotoButton.addEventListener("click", switchModal);
