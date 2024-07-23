@@ -277,6 +277,14 @@ li:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
+.form select {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
 .form label {
 	margin: 2em 0 1em 0;
 }
@@ -354,4 +362,30 @@ footer nav ul {
 	padding: 20px;
 	background-color: white;
 }
-/* 
+
+.file-section {
+	background-color: #E8F1F6;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 10px;
+}
+
+.file-section label {
+	padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 25px;
+    font-family: 'Syne';
+    color: white;
+    cursor: pointer;
+    background-color: #B9C5CC;
+	color: #306685;
+    width: 170px;
+	text-align: center;
+}
+
+.fa-image {
+	color: #B9C5CC;
+	font-size: 50px;
+	margin-top: 5px;
+}

@@ -209,3 +209,7 @@ function toggleModal() {
     addModal.style.display = "none";
   }
 }
+
+// Add photo input
+
+document.querySelector("#file").style.display = "none";
