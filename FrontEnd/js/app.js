@@ -97,6 +97,7 @@ function displayAdminMode() {
     editBanner.innerHTML =
       '<p><a href="#modal1" class="js-modal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</a></p>';
     document.body.prepend(editBanner);
+    document.querySelector(".log-button").textContent = "logout";
   }
 }
 
