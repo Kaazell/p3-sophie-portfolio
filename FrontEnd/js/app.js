@@ -1,5 +1,7 @@
 async function getWorks(filter) {
   document.querySelector(".gallery").innerHTML = "";
+  document.querySelector(".modal-gallery").innerHTML = "";
+
   const url = "http://localhost:5678/api/works";
   try {
     const response = await fetch(url);
