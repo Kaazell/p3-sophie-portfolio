@@ -94,12 +94,18 @@ document.querySelector(".tous").addEventListener("click", () => getWorks());
 
 function displayAdminMode() {
   if (sessionStorage.authToken) {
+    document.querySelector(".div-container").style.display = "none";
+    document.querySelector(".js-modal-2").style.display = "block";
+    document.querySelector(".gallery").style.margin = "30px 0 0 0";
     const editBanner = document.createElement("div");
     editBanner.className = "edit";
     editBanner.innerHTML =
       '<p><a href="#modal1" class="js-modal"><i class="fa-regular fa-pen-to-square"></i>Mode édition</a></p>';
     document.body.prepend(editBanner);
     document.querySelector(".log-button").textContent = "logout";
+    document.querySelector(".log-button").addEventListener("click", () => {
+      sessionStorage.removeItem("authToken");
+    });
   }
 }
 
