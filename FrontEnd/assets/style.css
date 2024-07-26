@@ -148,8 +148,12 @@ li:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
+
+.js-modal-2 {
+	padding-top: 10px;
+}
+
 .div-container {
     min-width: 550px;
 	width: 50%;
@@ -194,6 +198,21 @@ li:hover {
 	display: flex;
     justify-content: space-between;
 }
+
+
+.projets-title {
+	margin-bottom: 0;
+}
+
+.projets-container {
+    display: flex;
+    justify-content: center; /* Pour aligner verticalement les éléments */
+    gap: 10px; /* Pour ajouter un espace entre les éléments, si nécessaire */
+}
+
+
+
+
 .js-modal-close {
     border: none;
     background-color: white;
