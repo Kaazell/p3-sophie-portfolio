@@ -1,10 +1,12 @@
+const url = "http://localhost:5678/api";
+
+// Recuperation des travaux avec options de passer les filtres en parametres
 async function getWorks(filter) {
   document.querySelector(".gallery").innerHTML = "";
   document.querySelector(".modal-gallery").innerHTML = "";
 
-  const url = "http://localhost:5678/api/works";
   try {
-    const response = await fetch(url);
+    const response = await fetch(`${url}/works`);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
@@ -53,9 +55,8 @@ function setFigureModal(data) {
 }
 
 async function getCategories() {
-  const url = "http://localhost:5678/api/categories";
   try {
-    const response = await fetch(url);
+    const response = await fetch(`${url}/categories`);
     if (!response.ok) {
       throw new Error(`Response status: ${response.status}`);
     }
@@ -188,9 +189,8 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 async function deleteWork(event) {
   event.stopPropagation();
   const id = event.srcElement.id;
-  const deleteApi = "http://localhost:5678/api/works/";
   const token = sessionStorage.authToken;
-  let response = await fetch(deleteApi + id, {
+  let response = await fetch(`${url}/works/${id}`, {
     method: "DELETE",
     headers: {
       Authorization: "Bearer " + token,
@@ -290,7 +290,7 @@ addPictureForm.addEventListener("submit", async (event) => {
       return;
     }
 
-    let response = await fetch("http://localhost:5678/api/works", {
+    let response = await fetch(`${url}/works`, {
       method: "POST",
       headers: {
         Authorization: "Bearer " + token,
