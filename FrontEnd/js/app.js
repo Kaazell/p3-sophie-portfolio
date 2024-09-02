@@ -1,5 +1,15 @@
 const url = "http://localhost:5678/api";
 
+getWorks();
+getCategories();
+displayAdminMode();
+
+// Toggle entre les deux modales
+const addPhotoButton = document.querySelector(".add-photo-button");
+const backButton = document.querySelector(".js-modal-back");
+addPhotoButton.addEventListener("click", toggleModal);
+backButton.addEventListener("click", toggleModal);
+
 // Recuperation des travaux avec options de passer les filtres en parametres
 async function getWorks(filter) {
   document.querySelector(".gallery").innerHTML = "";
@@ -23,7 +33,7 @@ async function getWorks(filter) {
         setFigureModal(json[i]);
       }
     }
-    //Delete
+    // On appelle la fonction deleteWork ici pour pouvoir cibler fa-trash-can
     const trashCans = document.querySelectorAll(".fa-trash-can");
     trashCans.forEach((e) =>
       e.addEventListener("click", (event) => deleteWork(event))
@@ -32,8 +42,8 @@ async function getWorks(filter) {
     console.error(error.message);
   }
 }
-getWorks();
 
+// Integration a la galerie des figures (image + titre)
 function setFigure(data) {
   const figure = document.createElement("figure");
   figure.innerHTML = `<img src=${data.imageUrl} alt=${data.title}>
@@ -42,6 +52,7 @@ function setFigure(data) {
   document.querySelector(".gallery").append(figure);
 }
 
+// Integration a la modale des figures (image + titre)
 function setFigureModal(data) {
   const figure = document.createElement("figure");
   figure.innerHTML = `<div class="image-container">
@@ -54,6 +65,7 @@ function setFigureModal(data) {
   document.querySelector(".modal-gallery").append(figure);
 }
 
+//Recuperation des categories depuis l'API
 async function getCategories() {
   try {
     const response = await fetch(`${url}/categories`);
@@ -69,8 +81,8 @@ async function getCategories() {
     console.error(error.message);
   }
 }
-getCategories();
 
+// Ajout des eventListeners aux filtres
 function setFilter(data) {
   const div = document.createElement("div");
   div.className = data.id;
@@ -83,6 +95,7 @@ function setFilter(data) {
   document.querySelector(".div-container").append(div);
 }
 
+// Affichage du filtre actif et des "figures" associées
 function toggleFilter(event) {
   const container = document.querySelector(".div-container");
   Array.from(container.children).forEach((child) =>
@@ -93,6 +106,7 @@ function toggleFilter(event) {
 
 document.querySelector(".tous").addEventListener("click", () => getWorks());
 
+// Utilisateur authentifié
 function displayAdminMode() {
   if (sessionStorage.authToken) {
     document.querySelector(".div-container").style.display = "none";
@@ -110,8 +124,7 @@ function displayAdminMode() {
   }
 }
 
-displayAdminMode();
-
+// MODALE
 let modal = null;
 const focusableSelector = "button, a, input, textarea";
 let focusables = [];
@@ -184,8 +197,7 @@ document.querySelectorAll(".js-modal").forEach((a) => {
   a.addEventListener("click", openModal);
 });
 
-// Delete Function
-
+// Fonction de suppression des travaux
 async function deleteWork(event) {
   event.stopPropagation();
   const id = event.srcElement.id;
@@ -207,13 +219,7 @@ async function deleteWork(event) {
   }
 }
 
-//Toggle function
-const addPhotoButton = document.querySelector(".add-photo-button");
-const backButton = document.querySelector(".js-modal-back");
-
-addPhotoButton.addEventListener("click", toggleModal);
-backButton.addEventListener("click", toggleModal);
-
+// Toggle entre les 2 modales
 function toggleModal() {
   const galleryModal = document.querySelector(".gallery-modal");
   const addModal = document.querySelector(".add-modal");
@@ -230,7 +236,7 @@ function toggleModal() {
   }
 }
 
-// Add photo input
+// Gestion de l'ajout d'une nouvelle photo
 let img = document.createElement("img");
 let file;
 
@@ -254,7 +260,6 @@ document.getElementById("file").addEventListener("change", function (event) {
 });
 
 // Handle picture submit
-
 const titleInput = document.getElementById("title");
 let titleValue = "";
 
