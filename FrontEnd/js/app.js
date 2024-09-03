@@ -202,20 +202,23 @@ async function deleteWork(event) {
   event.stopPropagation();
   const id = event.srcElement.id;
   const token = sessionStorage.authToken;
-  let response = await fetch(`${url}/works/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-  if (response.status == 401 || response.status == 500) {
-    const errorBox = document.createElement("div");
-    errorBox.className = "error-login";
-    errorBox.innerHTML = "Il y a eu une erreur";
-    document.querySelector(".modal-button-container").prepend(errorBox);
-  } else {
-    let result = await response.json();
-    console.log(result);
+
+  try {
+    let response = await fetch(`${url}/works/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
+
+    if (response.status == 401 || response.status == 500) {
+      const errorBox = document.createElement("div");
+      errorBox.className = "error-login";
+      errorBox.innerHTML = "Il y a eu une erreur";
+      document.querySelector(".modal-button-container").prepend(errorBox);
+    }
+  } catch (error) {
+    console.error("Erreur lors de la suppression:", error);
   }
 }
 
@@ -302,7 +305,7 @@ addPictureForm.addEventListener("submit", async (event) => {
       },
       body: formData,
     });
-    if (response.status !== 200) {
+    if (response.status !== 201) {
       const errorText = await response.text();
       console.error("Erreur : ", errorText);
       const errorBox = document.createElement("div");
