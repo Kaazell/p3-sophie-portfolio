@@ -205,7 +205,7 @@ async function deleteWork(event) {
   const token = sessionStorage.authToken;
 
   try {
-    let response = await fetch(`${url}/works/${id}`, {
+    const response = await fetch(`${url}/works/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: "Bearer " + token,
@@ -241,17 +241,23 @@ function toggleModal() {
 }
 
 // Gestion de l'ajout d'une nouvelle photo
-
 function handlePictureSubmit() {
-  let img = document.createElement("img");
-  let file;
+  const img = document.createElement("img");
+  const fileInput = document.getElementById("file");
+  let file; // On ajoutera dans cette variable la photo qui a été uploadée.
+  fileInput.style.display = "none";
+  fileInput.addEventListener("change", function (event) {
+    file = event.target.files[0];
+    const maxFileSize = 4 * 1024 * 1024;
 
-  document.querySelector("#file").style.display = "none";
-  document.getElementById("file").addEventListener("change", function (event) {
-    file = event.target.files[0]; // Assignez le fichier à une variable globale
     if (file && (file.type === "image/jpeg" || file.type === "image/png")) {
+      if (file.size > maxFileSize) {
+        alert("La taille de l'image ne doit pas dépasser 4 Mo.");
+        return;
+      }
+
       const reader = new FileReader();
-      reader.onload = function (e) {
+      reader.onload = (e) => {
         img.src = e.target.result;
         img.alt = "Uploaded Photo";
         document.getElementById("photo-container").appendChild(img);
@@ -264,9 +270,9 @@ function handlePictureSubmit() {
       alert("Veuillez sélectionner une image au format JPG ou PNG.");
     }
   });
+
   const titleInput = document.getElementById("title");
   let titleValue = "";
-
   let selectedValue = "1";
 
   document.getElementById("category").addEventListener("change", function () {
@@ -283,10 +289,8 @@ function handlePictureSubmit() {
     event.preventDefault();
     const hasImage = document.querySelector("#photo-container").firstChild;
     if (hasImage && titleValue) {
-      // Créez un nouvel objet FormData
       const formData = new FormData();
 
-      // Ajout du fichier au FormData
       formData.append("image", file);
       formData.append("title", titleValue);
       formData.append("category", selectedValue);
