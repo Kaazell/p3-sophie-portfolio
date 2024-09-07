@@ -255,16 +255,16 @@ function handlePictureSubmit() {
         alert("La taille de l'image ne doit pas dépasser 4 Mo.");
         return;
       }
-
       const reader = new FileReader();
       reader.onload = (e) => {
         img.src = e.target.result;
         img.alt = "Uploaded Photo";
         document.getElementById("photo-container").appendChild(img);
       };
+      // Je converti l'image en une URL de donnees
       reader.readAsDataURL(file);
       document
-        .querySelectorAll(".picture-loaded")
+        .querySelectorAll(".picture-loaded") // Pour enlever ce qui se trouvait avant d'upload l'image
         .forEach((e) => (e.style.display = "none"));
     } else {
       alert("Veuillez sélectionner une image au format JPG ou PNG.");
