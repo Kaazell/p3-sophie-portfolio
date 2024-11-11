@@ -1,14 +1,14 @@
 # Projet - Site Web d'une Architecte d'Intérieur
 
 ## Description du projet
-Ce projet consiste à créer une page web dynamique pour une architecte d'intérieur en utilisant **JavaScript** et en communiquant avec une **API**. Vous travaillerez sur la partie **Front-End** du site, avec un focus sur la gestion des événements utilisateurs et la manipulation du DOM via JavaScript.
+Ce projet consiste à créer une page web dynamique pour une architecte d'intérieur en utilisant **JavaScript** et en communiquant avec une **API**. J'ai travaillé sur la partie **Front-End** du site, avec un focus sur la gestion des événements utilisateurs et la manipulation du DOM via JavaScript.
 
 Les fonctionnalités principales incluent :
 - Développement de la page de présentation des travaux de l'architecte, en utilisant le HTML fourni.
 - Création d'une page de connexion pour l'administrateur du site.
 - Intégration d'une modale permettant d'uploader de nouveaux médias.
 
-Ce projet offre une opportunité de travailler en profondeur avec JavaScript, tout en ayant pour la première fois accès à un code **back-end** pour tester et valider les fonctionnalités. Vous utiliserez également **Figma** pour les maquettes, **Visual Studio Code** pour le développement, et **GitHub** pour la gestion de version.
+Ce projet offre une opportunité de travailler en profondeur avec JavaScript, tout en ayant pour la première fois accès à un code **back-end** pour tester et valider les fonctionnalités. Les outils suivants ont été utilisés: **Figma** pour les maquettes, **Visual Studio Code** pour le développement, et **GitHub** pour la gestion de version.
 
 ## Objectifs pédagogiques
 - Maîtriser la manipulation du **DOM** avec JavaScript.
