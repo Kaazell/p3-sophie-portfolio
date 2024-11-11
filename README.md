@@ -63,7 +63,7 @@ Ouvrez le fichier index.html dans votre navigateur pour afficher la page de pré
 Pour tester les fonctionnalités interactives et la communication avec l'API, assurez-vous que le serveur backend est en cours d'exécution.
 
 ## Aperçu
-![Capture d'écran du portfolio de Sophie Bluel](/screenshots/sophie1.wepb)
+![Capture d'écran du portfolio de Sophie Bluel](/screenshots/sophie1.webp)
 
 ### Remarques
 Ce projet permet d'approfondir la manipulation du DOM avec JavaScript et d'apprendre à communiquer avec une API. Ces compétences sont essentielles pour tout développeur souhaitant créer des applications web modernes et dynamiques.
